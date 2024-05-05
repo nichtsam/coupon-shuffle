@@ -2,17 +2,22 @@ import { describe, expect, it } from "vitest";
 import { getAllPossibleCouponCombinations } from "../src/coupon-shuffle.ts";
 
 it("developing", () => {
-  const coupon1 = { blockedTypes: ["1"] };
-  const coupon2 = { blockedTypes: ["1"] };
+  const coupon0 = { blockedTypes: ["1"] };
+  const coupon1 = { blockedTypes: ["3"] };
+  const coupon2 = { blockedTypes: [] };
   const coupon3 = { blockedTypes: [] };
-  const coupon4 = { blockedTypes: [] };
-  const coupon5 = { blockedTypes: ["2"] };
+  const coupon4 = { blockedTypes: ["1", "2"] };
+  console.log("answer:");
+  console.log(`
+2,3,0,1;
+2,3,1,4;
+`);
   getAllPossibleCouponCombinations([
+    coupon0,
     coupon1,
     coupon2,
     coupon3,
     coupon4,
-    coupon5,
   ]);
 });
 
