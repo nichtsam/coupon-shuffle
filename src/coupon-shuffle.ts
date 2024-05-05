@@ -1,6 +1,14 @@
 export function getAllPossibleCouponCombinations<
   T extends { blockedTypes: Array<string> },
 >(coupons: Array<T>): Array<Array<T>> {
+  (function debug() {
+    coupons = coupons.map((c, i) => {
+      // @ts-ignore
+      c.id = i;
+      return c;
+    });
+  })();
+
   const alwaysCoupons: T[] = [];
   const typeBuckets = coupons.reduce<Record<string, T[]>>((buckets, coupon) => {
     if (coupon.blockedTypes.length === 0) {
@@ -29,6 +37,6 @@ export function getAllPossibleCouponCombinations<
     combinations.push(minimunCombo);
   }
 
-  // console.dir({ coupons, combinations, alwaysCoupons }, { depth: Infinity });
+  console.dir({ coupons, combinations }, { depth: Infinity });
   return combinations;
 }
